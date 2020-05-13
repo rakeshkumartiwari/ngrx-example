@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "fruitName": "Mango",
+        "fruitCode": 12345
+    },
+    {
+        "id": 2,
+        "fruitName": "Banana",
+        "fruitCode": 45644
+    },
+    {
+        "id": 3,
+        "fruitName": "Orange",
+        "fruitCode": 34566
+    },
+    {
+        "id": 4,
+        "fruitName": "Kiwi",
+        "fruitCode": 90876
+    }
+]

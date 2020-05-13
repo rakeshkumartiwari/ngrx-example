@@ -1,0 +1,26 @@
+<h2>Product List</h2>
+<div class="container">
+    <div>
+        <table  cellspacing="5px" cellpadding="5px">
+            <thead>
+                <th>Fruit Name</th>
+                <th *ngIf="displayCode">Fruit Code</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fruit of fruitList">
+                    <td>
+                        <span>{{fruit.fruitName}}</span>
+                    </td>
+                    <td>
+                        <span *ngIf="displayCode">{{fruit.fruitCode}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <label>Product Code</label>
+        <input type="checkbox" (change)="onChange($event.target.checked)" [checked]="displayCode">
+    </div>
+</div>
