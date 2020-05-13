@@ -4,6 +4,7 @@ import * as fromProduct from '../../product/state/product.reducer';
 import * as productActions from '../../product/state/product.actions';
 import { ProductService } from '../product.service';
 import { Product } from './product';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,7 @@ import { Product } from './product';
 export class ProductComponent implements OnInit {
   displayCode: boolean;
   fruitList: Product[];
-
+  errorMassage$: Observable<string>;
   constructor(private store: Store<fromProduct.State>, private productSvc: ProductService) { }
 
   ngOnInit() {
@@ -21,15 +22,11 @@ export class ProductComponent implements OnInit {
       showProductCode => this.displayCode = showProductCode
     );
 
+    this.errorMassage$ = this.store.pipe(select(fromProduct.getError));
     this.store.dispatch(new productActions.Load());
     this.store.pipe(select(fromProduct.getProducts)).subscribe(
       (fruitList: Product[]) => this.fruitList = fruitList
     );
-
-    // this.productSvc.getData().subscribe(
-    //   (fruitList: Product[]) => this.fruitList = fruitList,
-    //   err => console.log('Error : ', err)
-    // );
 
   }
 

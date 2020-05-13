@@ -1,7 +1,7 @@
 <h2>Product List</h2>
-<div class="container">
+<div class="container" *ngIf="fruitList && fruitList.length">
     <div>
-        <table  cellspacing="5px" cellpadding="5px">
+        <table cellspacing="5px" cellpadding="5px">
             <thead>
                 <th>Fruit Name</th>
                 <th *ngIf="displayCode">Fruit Code</th>
@@ -24,3 +24,4 @@
         <input type="checkbox" (change)="onChange($event.target.checked)" [checked]="displayCode">
     </div>
 </div>
+<div *ngIf="errorMassage$ | async as errorMassage">{{errorMassage}}</div>

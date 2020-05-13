@@ -5,7 +5,8 @@ import { Product } from '../product/product';
 export enum ProductActionType {
     ToggleProductCode = '[product] Toggle Product Code',
     Load = '[Product] Load',
-    LoadSuccess = '[Product] Load Success'
+    LoadSuccess = '[Product] Load Success',
+    LoadFail = '[Product] Load Fail'
 }
 
 export class ToggleProductCode implements Action {
@@ -28,4 +29,12 @@ export class LoadSuccess implements Action {
     }
 }
 
-export type ProductActions = ToggleProductCode | Load | LoadSuccess;
+export class LoadFail implements Action {
+    readonly type = ProductActionType.LoadFail;
+
+    constructor(public payload: string) {
+
+    }
+}
+
+export type ProductActions = ToggleProductCode | Load | LoadSuccess | LoadFail;

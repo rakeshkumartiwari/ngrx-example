@@ -10,12 +10,14 @@ export interface State extends fromRoot.State {
 export interface ProductState {
     showProductCode: boolean;
     products: Product[];
+    error: string;
 }
 
 const initialState: ProductState = {
     showProductCode: true,
-    products: []
-}
+    products: [],
+    error: ''
+};
 
 const getProductFeatureState = createFeatureSelector<ProductState>('product');
 
@@ -29,6 +31,11 @@ export const getProducts = createSelector(
     state => state.products
 );
 
+export const getError = createSelector(
+    getProductFeatureState,
+    state => state.error
+);
+
 export function reducer(state = initialState, action: ProductActions): ProductState {
     switch (action.type) {
         case ProductActionType.ToggleProductCode:
@@ -36,11 +43,18 @@ export function reducer(state = initialState, action: ProductActions): ProductSt
                 ...state,
                 showProductCode: action.payload
             };
-            case ProductActionType.LoadSuccess:
-                return {
-                    ...state,
-                    products: action.payload
-                };
+        case ProductActionType.LoadSuccess:
+            return {
+                ...state,
+                products: action.payload,
+                error: ''
+            };
+        case ProductActionType.LoadFail:
+            return {
+                ...state,
+                products: [],
+                error: action.payload
+            };
         default:
             return state;
     }
