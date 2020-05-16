@@ -1,27 +1,26 @@
-<h2>Product List</h2>
-<div class="container" *ngIf="fruitList && fruitList.length">
-    <div>
-        <table cellspacing="5px" cellpadding="5px">
-            <thead>
-                <th>Fruit Name</th>
-                <th *ngIf="displayCode">Fruit Code</th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let fruit of fruitList">
-                    <td>
-                        <span>{{fruit.fruitName}}</span>
-                    </td>
-                    <td>
-                        <span *ngIf="displayCode">{{fruit.fruitCode}}</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div>
-        <label>Product Code</label>
-        <input type="checkbox" (change)="onChange($event.target.checked)" [checked]="displayCode">
+<div class="container">
+    <div class="alert alert-danger" *ngIf="errorMassage$ | async as errorMassage">{{errorMassage}}</div>
+    <div class="main">
+        <div class="card text-white bg-dark" style="width: 18rem;" *ngIf="fruitList && fruitList.length">
+            <div class="card-header">
+                Product List
+            </div>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-white bg-dark" *ngFor="let fruit of fruitList" (click)="onProductClick(fruit)">
+                        {{fruit.fruitName}}
+                        <span *ngIf="displayCode">({{fruit.fruitCode}})</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <label class="form-check-label mr-4">Product Code</label>
+                <input type="checkbox" class="form-check-input" (change)="onChange($event.target.checked)"
+                    [checked]="displayCode">
+            </div>
+        </div>
+        <div>
+            <app-product-details></app-product-details>
+        </div>
     </div>
 </div>
-<div *ngIf="errorMassage$ | async as errorMassage">{{errorMassage}}</div>

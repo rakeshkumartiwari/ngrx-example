@@ -1,0 +1,21 @@
+<div class="card text-white bg-dark" *ngIf="!isCancel">
+    <div class="card-header">
+        Product Details
+    </div>
+    <div class="card-body">
+        <form [formGroup]="fruitFrom">
+            <div class="form-group">
+                <label>Fruit Name: </label>
+                <input type="text" formControlName="fruitName" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Fruit Code: </label>
+                <input type="text" formControlName="fruitCode" class="form-control">
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary mr-2">Save</button>
+        <button class="btn btn-warning" type="button" (click)="onCancel()">Cancel</button>
+    </div>
+</div>

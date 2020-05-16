@@ -5,6 +5,7 @@ import * as productActions from '../../product/state/product.actions';
 import { ProductService } from '../product.service';
 import { Product } from './product';
 import { Observable } from 'rxjs';
+import { Fruit } from '../product-entities';
 
 @Component({
   selector: 'app-product',
@@ -15,6 +16,7 @@ export class ProductComponent implements OnInit {
   displayCode: boolean;
   fruitList: Product[];
   errorMassage$: Observable<string>;
+  fruitDetails: Fruit;
   constructor(private store: Store<fromProduct.State>, private productSvc: ProductService) { }
 
   ngOnInit() {
@@ -32,6 +34,11 @@ export class ProductComponent implements OnInit {
 
   onChange(value: boolean) {
     this.store.dispatch(new productActions.ToggleProductCode(value));
+  }
+
+  onProductClick(fruit: Fruit) {
+    this.fruitDetails = fruit;
+    this.productSvc.setProductDetails({ isCancel: false, fruitDetails: fruit });
   }
 
 }
