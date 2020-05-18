@@ -7,6 +7,7 @@ import { Product } from './product';
 import { Observable } from 'rxjs';
 import { Fruit } from '../product-entities';
 
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',

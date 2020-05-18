@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.subscription.push(this.productSvc.geProductDetails.subscribe((product: ProductDetails) => {
       this.isCancel = product.isCancel;
       this.fruitFrom.patchValue({ fruitName: product.fruitDetails.fruitName, fruitCode: product.fruitDetails.fruitCode });
-    }))
+    }));
   }
 
   ngOnDestroy() {
