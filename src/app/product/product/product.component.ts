@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import * as fromProduct from '../../product/state/product.reducer';
-import * as productActions from '../../product/state/product.actions';
+import * as fromProduct from '../state/selectors/product.selector';
+import * as productActions from '../state/actions/product.actions';
 import { ProductService } from '../product.service';
 import { Product } from './product';
 import { Observable } from 'rxjs';
-import { Fruit } from '../product-entities';
+import { Fruit } from '../models/product.model';
 
 
 @Component({
@@ -26,7 +26,7 @@ export class ProductComponent implements OnInit {
     );
 
     this.errorMassage$ = this.store.pipe(select(fromProduct.getError));
-    this.store.dispatch(new productActions.Load());
+    this.store.dispatch(productActions.Load());
     this.store.pipe(select(fromProduct.getProducts)).subscribe(
       (fruitList: Product[]) => this.fruitList = fruitList
     );
@@ -34,7 +34,7 @@ export class ProductComponent implements OnInit {
   }
 
   onChange(value: boolean) {
-    this.store.dispatch(new productActions.ToggleProductCode(value));
+    this.store.dispatch(productActions.ToggleProductCode({ payload: value }));
   }
 
   onProductClick(fruit: Fruit) {

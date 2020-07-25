@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { Fruit, ProductDetails } from '../product-entities';
+import { Fruit, ProductDetails } from '../models/product.model';
 import { ProductService } from '../product.service';
 import { Subscription } from 'rxjs';
 

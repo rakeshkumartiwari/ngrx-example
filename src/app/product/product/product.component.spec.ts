@@ -4,11 +4,11 @@ import { ProductComponent } from './product.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { from } from 'rxjs';
-import { Product } from '../../product/product/product'
+import { Product } from '../../product/product/product';
 import { ProductService } from '../product.service';
-import * as reducer from '../state/product.reducer';
+import * as reducer from '../state/reducer/product.reducer';
 import { HttpClientModule } from '@angular/common/http';
-import * as productActions from '../../product/state/product.actions';
+import * as productActions from '../state/actions/product.actions';
 
 fdescribe('ProductComponent', () => {
   let store = MockStore;
@@ -55,7 +55,7 @@ fdescribe('ProductComponent', () => {
   it('should displayCode true', () => {
     component.fruitList = [ {
       id: 1,
-      fruitName: "Mango",
+      fruitName: 'Mango',
       fruitCode: 12345
   }];
     expect(component.fruitList.length).toBe(1);
