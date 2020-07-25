@@ -1,4 +1,3 @@
-// import { ProductActions, ProductActionType } from '../actions/product.actions';
 import * as productAction from '../actions/product.actions';
 import { createReducer, on, Action } from '@ngrx/store';
 import { ProductState } from '../../models/product.model';
@@ -40,28 +39,3 @@ export const reducerProduct = createReducer(initialState,
 export function reducer(state: ProductState | undefined, action: Action) {
     return reducerProduct(state, action);
 }
-
-
-// export function reducer(state = initialState, action: ProductActions): ProductState {
-//     switch (action.type) {
-//         case ProductActionType.ToggleProductCode:
-//             return {
-//                 ...state,
-//                 showProductCode: action.payload
-//             };
-//         case ProductActionType.LoadSuccess:
-//             return {
-//                 ...state,
-//                 products: action.payload,
-//                 error: ''
-//             };
-//         case ProductActionType.LoadFail:
-//             return {
-//                 ...state,
-//                 products: [],
-//                 error: action.payload
-//             };
-//         default:
-//             return state;
-//     }
-// }
