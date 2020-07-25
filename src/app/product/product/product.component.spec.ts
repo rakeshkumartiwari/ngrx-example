@@ -6,7 +6,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { from } from 'rxjs';
 import { Product } from '../../product/product/product';
 import { ProductService } from '../product.service';
-import * as reducer from '../state/reducer/product.reducer';
+import * as selectors from '../state/selectors/product.selector';
 import { HttpClientModule } from '@angular/common/http';
 import * as productActions from '../state/actions/product.actions';
 
@@ -23,9 +23,9 @@ fdescribe('ProductComponent', () => {
       providers: [ProductService,
         provideMockStore({
           selectors: [
-            { selector: reducer.getProducts, value: [] },
-            { selector: reducer.getShowProductCode, value: true },
-            { selector: reducer.getError, value: '' }
+            { selector: selectors.getProducts, value: [] },
+            { selector: selectors.getShowProductCode, value: true },
+            { selector: selectors.getError, value: '' }
           ]
         })
       ]
