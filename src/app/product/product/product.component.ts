@@ -34,12 +34,12 @@ export class ProductComponent implements OnInit {
   }
 
   onChange(value: boolean) {
-    this.store.dispatch(productActions.ToggleProductCode({ payload: value }));
+    this.store.dispatch(productActions.ToggleProductCode({ payload: value }))
   }
 
   onProductClick(fruit: Fruit) {
     this.fruitDetails = fruit;
-    this.productSvc.setProductDetails({ isCancel: false, fruitDetails: fruit });
+    this.productSvc.setProductDetails({ isCancel: false, fruitDetails: fruit })
   }
 
 }
