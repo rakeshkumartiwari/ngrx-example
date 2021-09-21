@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
       fruitName: '',
       fruitCode: null
     });
-    this.isCancel = true;
+    this.isCancel = true
     this.subscription.push(this.productSvc.geProductDetails.subscribe((product: ProductDetails) => {
       this.isCancel = product.isCancel;
       this.fruitFrom.patchValue({ fruitName: product.fruitDetails.fruitName, fruitCode: product.fruitDetails.fruitCode });
@@ -36,6 +36,6 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
-    this.isCancel = true;
+    this.isCancel = true
   }
 }
